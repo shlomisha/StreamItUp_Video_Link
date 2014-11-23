@@ -10,8 +10,8 @@
 // @include        http://www.streamitupcdn.net/huji_db/database/vod_student_window_E.php
 // @grant          GM_addStyle
 // @run-at         document-end
-// @updateURL      https://raw.githubusercontent.com/shlomisha/userscripts/master/StreamItUp_Video_Link.meta.js
-// @downloadURL    https://raw.githubusercontent.com/shlomisha/userscripts/master/StreamItUp_Video_Link.user.js
+// @updateURL      https://raw.githubusercontent.com/shlomisha/StreamItUp_Video_Link/master/StreamItUp_Video_Link.meta.js
+// @downloadURL    https://raw.githubusercontent.com/shlomisha/StreamItUp_Video_Link/master/StreamItUp_Video_Link.user.js
 // ==/UserScript==
 
 var EMPTY_VIDEO_NAME = "blankvideo.wmv";
