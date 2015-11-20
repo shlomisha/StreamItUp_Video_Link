@@ -1,7 +1,7 @@
 // ==UserScript==
 // @id             HUJI_Stream_It_Up_Video_Link
 // @name           StreamItUp Video Link
-// @version        1.1.0
+// @version        1.1.1
 // @namespace      shlomisha
 // @author         shlomisha
 // @description    Shows the lectures links, in streamitup.com systems, so it is easier to download them, or watch them in other OS than Windows
