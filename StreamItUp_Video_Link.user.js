@@ -1,7 +1,7 @@
 // ==UserScript==
 // @id             HUJI_Stream_It_Up_Video_Link
 // @name           StreamItUp Video Link
-// @version        1.1.0
+// @version        1.1.1
 // @namespace      shlomisha
 // @author         shlomisha
 // @description    Shows the lectures links, in streamitup.com systems, so it is easier to download them, or watch them in other OS than Windows
@@ -60,6 +60,7 @@ table += "</tr>";
 
 var screenPath;
 var boardPath;
+var videoUrl;
 for (var i = 0; i < movies.length; i++)
 {
 	if (movies[i].full_scr_path.indexOf(EMPTY_VIDEO_NAME) >= 0)
@@ -69,8 +70,9 @@ for (var i = 0; i < movies.length; i++)
 	}
 	else
 	{
-		screenPath = "<input type=\"text\" value=\"" + movies[i].full_scr_path + "\" onfocus=\"this.select();\" readonly=\"readonly\" />";
-		screenPathView = "<a href=\"" + movies[i].full_scr_path + "\">צפיה view</a>";
+		videoUrl = (movies[i].full_scr_path.indexOf("rtsp://") == 0 ? movies[i].full_other_path.replace("/video/cam_", "/video/screen_") : movies[i].full_scr_path);
+		screenPath = "<input type=\"text\" value=\"" + videoUrl + "\" onfocus=\"this.select();\" readonly=\"readonly\" />";
+		screenPathView = "<a href=\"" + videoUrl + "\" target=\"_blank\">צפיה<br />view</a>";
 	}
 	
 	if (movies[i].full_cam_path.indexOf(EMPTY_VIDEO_NAME) >= 0)
@@ -80,8 +82,9 @@ for (var i = 0; i < movies.length; i++)
 	}
 	else
 	{
-		boardPath = "<input type=\"text\" value=\"" + movies[i].full_cam_path + "\" onfocus=\"this.select();\" readonly=\"readonly\" />";
-		boardPathView = "<a href=\"" + movies[i].full_cam_path + "\">צפיה<br />view</a>";
+		videoUrl = (movies[i].full_scr_path.indexOf("rtsp://") == 0 ? movies[i].full_other_path : movies[i].full_scr_path);
+		boardPath = "<input type=\"text\" value=\"" + videoUrl + "\" onfocus=\"this.select();\" readonly=\"readonly\" />";
+		boardPathView = "<a href=\"" + videoUrl + "\" target=\"_blank\">צפיה<br />view</a>";
 	}
 	
 	table += "<tr>\
