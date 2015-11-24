@@ -1,13 +1,14 @@
 // ==UserScript==
 // @id             HUJI_Stream_It_Up_Video_Link
 // @name           StreamItUp Video Link
-// @version        1.1.1
+// @version        1.1.2
 // @namespace      shlomisha
 // @author         shlomisha
 // @description    Shows the lectures links, in streamitup.com systems, so it is easier to download them, or watch them in other OS than Windows
 // @include        http://www.streamitup.com/elearning/*/vod_student_window_E.php
 // @include        http://www.streamitup.com/huji_db/*
 // @include        http://www.streamitupcdn.net/huji_db/database/vod_student_window_E.php
+// @include        http://www.streamitupcdn.net/ekmd_db/database/vod_student_window_E.php
 // @grant          GM_addStyle
 // @run-at         document-end
 // @updateURL      https://raw.githubusercontent.com/shlomisha/StreamItUp_Video_Link/master/StreamItUp_Video_Link.meta.js
@@ -70,7 +71,14 @@ for (var i = 0; i < movies.length; i++)
 	}
 	else
 	{
-		videoUrl = (movies[i].full_scr_path.indexOf("rtsp://") == 0 ? movies[i].full_other_path.replace("/video/cam_", "/video/screen_") : movies[i].full_scr_path);
+		if (movies[i].full_scr_path.indexOf("rtsp://") == 0)
+		{
+			videoUrl = movies[i].full_other_path.replace("rtsp://194.90.168.155", "http://streamitup.video-streaming.co.il").replace("/video/cam_", "/video/screen_");
+		}
+		else
+		{
+			videoUrl = movies[i].full_scr_path;
+		}
 		screenPath = "<input type=\"text\" value=\"" + videoUrl + "\" onfocus=\"this.select();\" readonly=\"readonly\" />";
 		screenPathView = "<a href=\"" + videoUrl + "\" target=\"_blank\">צפיה<br />view</a>";
 	}
@@ -82,7 +90,14 @@ for (var i = 0; i < movies.length; i++)
 	}
 	else
 	{
-		videoUrl = (movies[i].full_scr_path.indexOf("rtsp://") == 0 ? movies[i].full_other_path : movies[i].full_scr_path);
+		if (movies[i].full_scr_path.indexOf("rtsp://") == 0)
+		{
+			videoUrl = movies[i].full_other_path.replace("rtsp://194.90.168.155", "http://streamitup.video-streaming.co.il");
+		}
+		else
+		{
+			videoUrl = movies[i].full_scr_path;
+		}
 		boardPath = "<input type=\"text\" value=\"" + videoUrl + "\" onfocus=\"this.select();\" readonly=\"readonly\" />";
 		boardPathView = "<a href=\"" + videoUrl + "\" target=\"_blank\">צפיה<br />view</a>";
 	}
